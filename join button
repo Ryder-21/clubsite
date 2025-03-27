@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Club Website</title>
+</head>
+<body>
+  <h1>Welcome to Our Club!</h1>
 
+  <!-- Join Button -->
+  <button onclick="showJoinForm()">Join Now</button>
+
+  <!-- Join Form -->
+  <div id="join-form" style="display:none;">
+    <form onsubmit="addMember(); return false;">
+      <input type="text" id="member-name" placeholder="Enter your name" required>
+      <input type="email" id="member-email" placeholder="Enter your email" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Member List -->
+  <h2>Members</h2>
+  <ul id="member-list">
+    <!-- New members will be added here -->
+  </ul>
+
+  <script>
+    // Show the join form
+    function showJoinForm() {
+      document.getElementById('join-form').style.display = 'block';
+    }
+
+    // Add new members to the list
+    function addMember() {
+      const name = document.getElementById('member-name').value;
+      const email = document.getElementById('member-email').value;
+
+      // Create a new list item
+      const li = document.createElement('li');
+      li.textContent = `${name} (${email})`;
+
+      // Append the new member to the list
+      document.getElementById('member-list').appendChild(li);
+
+      // Clear the form and hide it
+      document.getElementById('join-form').style.display = 'none';
+      document.getElementById('member-name').value = '';
+      document.getElementById('member-email').value = '';
+      alert("Member added successfully!");
+    }
+  </script>
+</body>
+</html>
